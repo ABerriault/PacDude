@@ -20,11 +20,4 @@ public class Wall {
     fill(c);
     rect(x, y, w, h);
   }
-
-  public int[] getXY() {
-    int[] coords = new int[2];
-    coords[0] = x;
-    coords[1] = y;
-    return coords;
-  }
 }
