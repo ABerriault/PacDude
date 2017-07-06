@@ -23,12 +23,12 @@ public class Player {
 
   // Moves the player left by n.
   public void moveLeft(int n) {
-    x = x + n;
+    x = x - n;
   }
 
   // Moves the player right by n.
   public void moveRight(int n) {
-    x = x - n;
+    x = x + n;
   }
 
   // Moves the player down by n.
@@ -60,6 +60,13 @@ public class Player {
       return true;
     } else {
       return false;
+    }
+  }
+
+  boolean hitWall(Wall[] walls) {
+    for (Wall w : walls) {
+      if (x >= w.getX() && x+size <= ) {
+      }
     }
   }
 }
