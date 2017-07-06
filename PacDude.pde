@@ -10,12 +10,16 @@ void setup() {
   noStroke();
 
   // Create Walls
-  for (int i = 0; i < 5; i++) {
-    walls[i] = new Wall(50*i, 50, 5, 200);
-  }
-  for (int i = 4; i < 10; i++) {
-    walls[i] = new Wall(50, 50*i, 100, 200);
-  }
+  walls[0] = new Wall(25, 25, 5, 550);
+  walls[1] = new Wall(575, 25, 5, 550);
+  walls[2] = new Wall(25, 25, 550, 5);
+  walls[3] = new Wall(25, 575, 550, 5);
+  walls[4] = new Wall(400, 200, 5, 100);
+  walls[5] = new Wall(200, 200, 5, 100);
+  walls[6] = new Wall(100, 400, 400, 5);
+  walls[7] = new Wall(300, 326, 50, 50);
+  walls[8] = new Wall(325, 460, 200, 80);
+  walls[9] = new Wall(75,75, 450, 75);
 
   // Create Ghosts
   ghosts[0] = new Ghost(400, 400, color(50, 50, 150));
@@ -25,7 +29,7 @@ void draw() {
   background(0);
   // Draw PacDude
   pac.draw();
-  fill(255,255,255);
+  fill(255, 255, 255);
   //rect-25c.x-12c.y-12,25,25);
   // Draw Walls
   for (int i = 0; i < walls.length; i++) {
@@ -33,7 +37,7 @@ void draw() {
   }
 
   // Draw Ghosts
-  ghosts[0].draw();
+  ghosts[0].draw(pac);
 } 
 
 void keyPressed() {

@@ -5,8 +5,8 @@
 public class Player {
   private int x;
   private int y;
-  private int xVel = 1;
-  private int yVel = 0;
+  public int xVel = 1;
+  public int yVel = 0;
   private int s;
   private int lives;
   private int mult=2;
@@ -32,12 +32,14 @@ public class Player {
           yVel=0;
         }
       }
-    
-    x += xVel;
-    y += yVel;
+
+      x += xVel;
+      y += yVel;
     }
     fill(c);
     ellipse(x, y, s, s);
+    fill(255);
+    text(""+ x + ", " + y, x+s, y);
   }
 
   // Moves the player left by n.

@@ -17,7 +17,11 @@ public class Ghost {
     s = 20;
   }
 
-  public void draw() {
+  public void draw(Player p) {
+    // Follow the Player
+    xVel = p.xVel;
+    yVel = p.yVel;
+    
     collision();
     x += xVel;
     y += yVel;
