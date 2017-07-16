@@ -3,11 +3,11 @@
 // PacDude
 
 public class Wall {
-  private int x;
-  private int y;
-  private int w;
-  private int h;
-  private color c = color(26, 44, 186);
+  public int x;
+  public int y;
+  public int w;
+  public int h;
+  public color c = color(26, 44, 186);
 
   Wall (int xArg, int yArg, int widthArg, int heightArg) {
     x = xArg;

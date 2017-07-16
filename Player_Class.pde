@@ -22,14 +22,21 @@ public class Player {
 
   public void draw() {
     for (int v=0; v<mult; v++) {
-      int pac_top = y - 12 + yVel;
-      int pac_bot = y + 12 + yVel;
-      int pac_left = x - 12 +xVel;
-      int pac_right = x + 12+xVel ;
+      int top = y - 12 + yVel;
+      int bot = y + 12 + yVel;
+      int left = x - 12 +xVel;
+      int right = x + 12+xVel ;
       for (int i = 0; i < walls.length; i++) {
-        if (pac_left<walls[i].x+walls[i].w && pac_right>walls[i].x       &&     pac_top<walls[i].y+walls[i].h && pac_bot>walls[i].y ) {
+        if (left < (walls[i].x+walls[i].w) && right > walls[i].x && top < walls[i].y+walls[i].h && bot > walls[i].y ) {
           xVel=0;
           yVel=0;
+        }
+      }
+      for (int i = 0; i < ghosts.length; i++) {
+        if (left < (ghosts[i].x+20) && right > ghosts[i].x) {
+          if (top <  (ghosts[i].y+20) && bot > ghosts[i].y) {
+            die();
+          }
         }
       }
 
@@ -66,10 +73,19 @@ public class Player {
     yVel = -1;
   }
 
-  public void die() {
-    lives--;
+  // When a player collides with a ghost it takes a life away.
+  public int getLives() {
+    return lives;
   }
 
+  // When a player collides with a ghost it takes a life away.
+  public void die() {
+    lives--;
+    x = 300;
+    y = 300;
+  }
+
+  // Checks to see if the player has lost all their lives.
   public boolean isAlive() {
     if (lives > 0) {
       return true;

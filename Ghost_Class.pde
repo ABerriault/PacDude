@@ -3,12 +3,12 @@
 // PacDude
 
 public class Ghost {
-  private int x;
-  private int y;
-  private int xVel = 1;
-  private int yVel = 0;
-  private int s;
-  private color c;
+  public int x;
+  public int y;
+  public int xVel = 1;
+  public int yVel = 0;
+  public int s;
+  public color c;
 
   Ghost(int xArg, int yArg, color col) {
     x = xArg;
@@ -18,18 +18,31 @@ public class Ghost {
   }
 
   public void draw(Player p) {
-    // Follow the Player
-    xVel = p.xVel;
-    yVel = p.yVel;
-    
-    collision();
+    for (int i = 0; i < walls.length; i++) {
+      if (x < (walls[i].x+walls[i].w) && x+20 > walls[i].x) {
+        if (y < walls[i].y+walls[i].h && y+20 > walls[i].y ) {
+          collided(p);
+        }
+      }
+    }
+
     x += xVel;
     y += yVel;
-    
+
     fill(c);
     rect(x, y, s, s);
   }
 
-  private void collision() {
+  private void collided(Player p) {
+    if (p.x > x) {
+      xVel = 1;
+    } else {
+      xVel = -1;
+    }
+    if (p.y > y) {
+      yVel = 1;
+    } else {
+      yVel = -1;
+    }
   }
 }
